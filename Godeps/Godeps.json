@@ -1,0 +1,5 @@
+{
+	"ImportPath": "github.com/bluebird-tech/puffin_api",
+	"GoVersion": "go1.4.2",
+	"Deps": []
+}
