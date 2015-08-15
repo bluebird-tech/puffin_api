@@ -1,10 +1,13 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+	"os"
+)
 
 func main() {
 	http.HandleFunc("/", hello)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 }
 
 func hello(w http.ResponseWriter, r *http.Request) {

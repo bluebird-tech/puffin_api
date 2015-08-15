@@ -1,1 +1,1 @@
-web: api
+web: puffin_api
