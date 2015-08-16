@@ -19,6 +19,19 @@
 		{
 			"ImportPath": "github.com/qor/inflection",
 			"Rev": "45321e63b98c756df17369c027c1df89298e1288"
+		},
+		{
+			"ImportPath": "github.com/yvasiyarov/go-metrics",
+			"Rev": "c25f46c4b94079672242ec48a545e7ca9ebe3aec"
+		},
+		{
+			"ImportPath": "github.com/yvasiyarov/gorelic",
+			"Comment": "v0.0.6-32-gd835cea",
+			"Rev": "d835cea68f58c5e4eed594ed7fbad5214bd0ced7"
+		},
+		{
+			"ImportPath": "github.com/yvasiyarov/newrelic_platform_go",
+			"Rev": "db03d6dfd965ebc22dbfd910567c641b326ff055"
 		}
 	]
 }
