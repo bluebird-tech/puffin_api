@@ -1,16 +1,28 @@
 package main
 
 import (
-	"net/http"
-	"net/http/httptest"
+	"github.com/ant0ine/go-json-rest/rest"
+	"github.com/ant0ine/go-json-rest/rest/test"
+	"log"
 	"testing"
 )
 
-func TestHello(t *testing.T) {
-	req, _ := http.NewRequest("GET", "/", nil)
-	w := httptest.NewRecorder()
-	helloHandler().ServeHTTP(w, req)
-	if w.Code != http.StatusOK {
-		t.Errorf("Home page didn't return %v", http.StatusOK)
+func TestPostEvent(t *testing.T) {
+	i := Impl{}
+	i.InitDB()
+	i.InitSchema()
+
+	api := rest.NewApi()
+	api.Use(rest.DefaultDevStack...)
+	router, err := rest.MakeRouter(
+		rest.Post("/events", i.PostEvent),
+	)
+	if err != nil {
+		log.Fatal(err)
 	}
+	api.SetApp(router)
+	recorded := test.RunRequest(t, api.MakeHandler(),
+		test.MakeSimpleRequest("POST", "http://1.2.3.4/events", &map[string]string{"measurement": "stress"}))
+	recorded.CodeIs(201)
+	recorded.ContentTypeIsJson()
 }

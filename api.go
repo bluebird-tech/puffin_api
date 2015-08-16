@@ -24,6 +24,7 @@ func main() {
 		Name:    "Puffin Event API",
 		Verbose: true,
 	})
+	//api.Use(&rest.AccessLogJsonMiddleware{})
 	router, err := rest.MakeRouter(
 		rest.Post("/events", i.PostEvent),
 	)
@@ -31,7 +32,7 @@ func main() {
 		log.Fatal(err)
 	}
 	api.SetApp(router)
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), api.MakeHandler()))
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+os.Getenv("PORT"), api.MakeHandler()))
 }
 
 type NewRelicMiddleware struct {
@@ -99,11 +100,6 @@ func (i *Impl) PostEvent(w rest.ResponseWriter, r *rest.Request) {
 		rest.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	w.WriteHeader(http.StatusCreated)
 	w.WriteJson(&event)
-}
-
-func helloHandler() http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("hello!"))
-	})
 }

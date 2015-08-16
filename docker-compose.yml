@@ -1,0 +1,18 @@
+postgres:
+  image: postgres:9.4.4
+  environment:
+    - POSTGRES_USER=someone
+    - POSTGRES_PASSWORD=secret
+
+web:
+  build: .
+  volumes:
+    - .:/go/src/app
+  links:
+    - postgres
+  ports:
+    - 3000:49100
+  environment:
+    - PORT=3000
+    - DATABASE_URL=postgres://someone:secret@postgres/?sslmode=disable
+  working_dir: /go/src/app
