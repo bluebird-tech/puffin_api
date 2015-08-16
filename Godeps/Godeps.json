@@ -1,5 +1,24 @@
 {
 	"ImportPath": "github.com/bluebird-tech/puffin_api",
 	"GoVersion": "go1.4.2",
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "github.com/ant0ine/go-json-rest/rest",
+			"Comment": "v3.2.0-11-g2af9d00",
+			"Rev": "2af9d0034afcd83101abb1945f2a65ddbd563719"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/gorm",
+			"Rev": "dd0d4d931f0d6b52e3c8df75496b0a1aaa5667e6"
+		},
+		{
+			"ImportPath": "github.com/lib/pq",
+			"Comment": "go1.0-cutoff-59-gb269bd0",
+			"Rev": "b269bd035a727d6c1081f76e7a239a1b00674c40"
+		},
+		{
+			"ImportPath": "github.com/qor/inflection",
+			"Rev": "45321e63b98c756df17369c027c1df89298e1288"
+		}
+	]
 }
