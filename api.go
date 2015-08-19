@@ -27,7 +27,7 @@ func main() {
 	//api.Use(&rest.AccessLogJsonMiddleware{})
 	router, err := rest.MakeRouter(
 		rest.Post("/events", i.PostEvent),
-		rest.Post("/installations", i.PostInstallations),
+		rest.Post("/installations", i.PostInstallation),
 	)
 	if err != nil {
 		log.Fatal(err)
