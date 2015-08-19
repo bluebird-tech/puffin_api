@@ -27,6 +27,7 @@ func main() {
 	//api.Use(&rest.AccessLogJsonMiddleware{})
 	router, err := rest.MakeRouter(
 		rest.Post("/events", i.PostEvent),
+		rest.Post("/installations", i.PostInstallations),
 	)
 	if err != nil {
 		log.Fatal(err)
@@ -64,12 +65,31 @@ func (mw *NewRelicMiddleware) MiddlewareFunc(handler rest.HandlerFunc) rest.Hand
 
 type Event struct {
 	Id          int64     `json:"id"`
+	DeviceId    string    `sql:"size:40" json:"deviceId"`
+	MeasuredAt  time.Time `json:"measuredAt"`
 	Measurement string    `sql:"size:1024" json:"measurement"`
 	Fields      string    `sql:"size:1024" json:"fields"`
 	Tags        string    `sql:"size:1024" json:"tags"`
 	CreatedAt   time.Time `json:"createdAt"`
 	UpdatedAt   time.Time `json:"updatedAt"`
 	DeletedAt   time.Time `json:"-"`
+}
+
+type Installation struct {
+	Id                  int64     `json:"id"`
+	DeviceType          string    `sql:"size:40" json:"deviceType"`
+	DeviceManufacturer  string    `sql:"size:40" json:"deviceManufacturer"`
+	DeviceModel         string    `sql:"size:40" json:"deviceModel"`
+	DeviceProduct       string    `sql:"size:40" json:"deviceProduct"`
+	DeviceSdk           string    `sql:"size:40" json:"deviceSdk"`
+	DeviceSystemLocale  string    `sql:"size:40" json:"deviceSystemLocale"`
+	DeviceAdvertisingId string    `sql:"size:40" json:"deviceAdverstisingId"`
+	DeviceMobileCarrier string    `sql:"size:40" json:"deviceMobileCarrier"`
+	AppVersion          string    `sql:"size:40" json:"appVersion"`
+	AppVersionCode      string    `sql:"size:40" json:"appVersionCode"`
+	CreatedAt           time.Time `json:"createdAt"`
+	UpdatedAt           time.Time `json:"updatedAt"`
+	DeletedAt           time.Time `json:"-"`
 }
 
 type Impl struct {
@@ -88,6 +108,7 @@ func (i *Impl) InitDB() {
 
 func (i *Impl) InitSchema() {
 	i.DB.AutoMigrate(&Event{})
+	i.DB.AutoMigrate(&Installation{})
 }
 
 func (i *Impl) PostEvent(w rest.ResponseWriter, r *rest.Request) {
@@ -102,4 +123,18 @@ func (i *Impl) PostEvent(w rest.ResponseWriter, r *rest.Request) {
 	}
 	w.WriteHeader(http.StatusCreated)
 	w.WriteJson(&event)
+}
+
+func (i *Impl) PostInstallation(w rest.ResponseWriter, r *rest.Request) {
+	installation := Installation{}
+	if err := r.DecodeJsonPayload(&installation); err != nil {
+		rest.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	if err := i.DB.Save(&installation).Error; err != nil {
+		rest.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(http.StatusCreated)
+	w.WriteJson(&installation)
 }
