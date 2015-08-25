@@ -117,7 +117,7 @@ func (i *Impl) PostEvent(w rest.ResponseWriter, r *rest.Request) {
 		rest.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	if err := i.DB.Save(&event).Error; err != nil {
+	if err := i.DB.Create(&event).Error; err != nil {
 		rest.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
