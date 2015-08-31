@@ -68,6 +68,7 @@ type Event struct {
 	DeviceId    string    `sql:"size:40" json:"deviceId"`
 	MeasuredAt  time.Time `json:"measuredAt"`
 	Measurement string    `sql:"size:1024" json:"measurement"`
+	Value       float64   `json:"value"`
 	Fields      string    `sql:"size:1024" json:"fields"`
 	Tags        string    `sql:"size:1024" json:"tags"`
 	CreatedAt   time.Time `json:"createdAt"`
