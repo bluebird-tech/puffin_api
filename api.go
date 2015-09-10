@@ -71,6 +71,7 @@ type Event struct {
 	Value       float64   `json:"value"`
 	Fields      string    `sql:"size:1024" json:"fields"`
 	Tags        string    `sql:"size:1024" json:"tags"`
+	Note        string    `sql:"size:1024" json:"note"`
 	CreatedAt   time.Time `json:"createdAt"`
 	UpdatedAt   time.Time `json:"updatedAt"`
 	DeletedAt   time.Time `json:"-"`
