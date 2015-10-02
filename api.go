@@ -64,17 +64,21 @@ func (mw *NewRelicMiddleware) MiddlewareFunc(handler rest.HandlerFunc) rest.Hand
 }
 
 type Event struct {
-	Id          int64     `json:"id"`
-	DeviceId    string    `sql:"size:40" json:"deviceId"`
-	MeasuredAt  time.Time `json:"measuredAt"`
-	Measurement string    `sql:"size:1024" json:"measurement"`
-	Value       float64   `json:"value"`
-	Fields      string    `sql:"size:1024" json:"fields"`
-	Tags        string    `sql:"size:1024" json:"tags"`
-	Note        string    `sql:"size:1024" json:"note"`
-	CreatedAt   time.Time `json:"createdAt"`
-	UpdatedAt   time.Time `json:"updatedAt"`
-	DeletedAt   time.Time `json:"-"`
+	Id                          int64     `json:"id"`
+	DeviceId                    string    `sql:"size:40" json:"deviceId"`
+	MeasuredAt                  time.Time `json:"measuredAt"`
+	Measurement                 string    `sql:"size:1024" json:"measurement"`
+	Value                       float64   `json:"value"`
+	Fields                      string    `sql:"size:1024" json:"fields"`
+	Tags                        string    `sql:"size:1024" json:"tags"`
+	Note                        string    `sql:"size:1024" json:"note"`
+	CreatedAt                   time.Time `json:"createdAt"`
+	UpdatedAt                   time.Time `json:"updatedAt"`
+	DeletedAt                   time.Time `json:"-"`
+	NotificationIntervalMinutes int64     `json:"notificationIntervalMinutes"`
+	NotificationShownAt         time.Time `json:"notificationShownAt"`
+	NotificationDismissedAt     time.Time `json:"notificationDismissedAt"`
+	NotificationAcceptedAt      time.Time `json:"notificationAcceptedAt"`
 }
 
 type Installation struct {
