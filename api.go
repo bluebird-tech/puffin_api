@@ -79,6 +79,8 @@ type Event struct {
 	NotificationShownAt         *time.Time `json:"notificationShownAt"`
 	NotificationDismissedAt     *time.Time `json:"notificationDismissedAt"`
 	NotificationAcceptedAt      *time.Time `json:"notificationAcceptedAt"`
+	StartAt                     *time.Time `json:"startAt"`
+	EndAt                       *time.Time `json:"EndAt"`
 }
 
 type Installation struct {
