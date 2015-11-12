@@ -107,11 +107,18 @@ type Impl struct {
 
 func (i *Impl) InitDB() {
 	var err error
+
 	connection := os.Getenv("DATABASE_URL")
+
 	i.DB, err = gorm.Open("postgres", connection)
 	if err != nil {
 		log.Fatalf("Got error when connect database, the error is '%v'", err)
 	}
+
+	if err = i.DB.DB().Ping(); err != nil {
+		log.Fatalf("Unable to verify connection to database: '%v'", err)
+	}
+
 	i.DB.LogMode(true)
 }
 
