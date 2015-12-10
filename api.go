@@ -72,7 +72,7 @@ type Event struct {
 	Fields                      string     `sql:"size:1024" json:"fields"`
 	Tags                        string     `sql:"size:1024" json:"tags"`
 	Note                        string     `sql:"size:1024" json:"note"`
-	Tenant                      string     `sql:"size:30" json:"-"`
+	Tenant                      string     `sql:"size:30" json:"tenant"`
 	CreatedAt                   time.Time  `json:"createdAt"`
 	UpdatedAt                   time.Time  `json:"updatedAt"`
 	DeletedAt                   time.Time  `json:"-"`
