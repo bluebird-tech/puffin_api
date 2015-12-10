@@ -42,4 +42,10 @@ eb use <environment>
 eb deploy
 ```
 
+# Beanstalk Configuration
+
+## Health Check
+
+Enter url: `/health`.
+
 [1]:http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts-roles.html
