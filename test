@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -x
+
+cd /go/src/app
+godep restore
+
+go get github.com/axw/gocov/gocov
+go get github.com/mattn/goveralls
+if ! go get code.google.com/p/go.tools/cmd/cover; then
+  go get golang.org/x/tools/cmd/cover
+fi
+
+go install
+# $GOPATH/bin/goveralls
+go test

@@ -1,3 +1,4 @@
+# run tests: docker-compose run --rm web ./test
 postgres:
   image: postgres:9.4.4
   environment:
