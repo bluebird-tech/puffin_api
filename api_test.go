@@ -46,3 +46,23 @@ func TestPostInstallation(t *testing.T) {
 	recorded.CodeIs(201)
 	recorded.ContentTypeIsJson()
 }
+
+func TestGetHealth(t *testing.T) {
+	i := Impl{}
+	i.InitDB()
+	i.InitSchema()
+
+	api := rest.NewApi()
+	api.Use(rest.DefaultDevStack...)
+	router, err := rest.MakeRouter(
+		rest.Get("/health", i.GetHealth),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	api.SetApp(router)
+	recorded := test.RunRequest(t, api.MakeHandler(),
+		test.MakeSimpleRequest("GET", "http://1.2.3.4/health", nil))
+	recorded.CodeIs(200)
+	recorded.BodyIs("{\n  \"status\": \"ok\"\n}")
+}

@@ -28,6 +28,7 @@ func main() {
 	router, err := rest.MakeRouter(
 		rest.Post("/events", i.PostEvent),
 		rest.Post("/installations", i.PostInstallation),
+		rest.Get("/health", i.GetHealth),
 	)
 	if err != nil {
 		log.Fatal(err)
@@ -153,4 +154,12 @@ func (i *Impl) PostInstallation(w rest.ResponseWriter, r *rest.Request) {
 	}
 	w.WriteHeader(http.StatusCreated)
 	w.WriteJson(&installation)
+}
+
+func (i *Impl) GetHealth(w rest.ResponseWriter, r *rest.Request) {
+	if err := i.DB.DB().Ping(); err != nil {
+		rest.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.WriteJson(map[string]string{"status": "ok"})
 }
