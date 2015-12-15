@@ -68,6 +68,7 @@ type Event struct {
 	Id                          int64      `json:"id"`
 	DeviceId                    string     `sql:"size:40" json:"deviceId"`
 	Identifier                  string     `sql:"size:6" json:"identifier"`
+	AppVersion                  string     `sql:"size:20" json:"AppVersion"`
 	MeasuredAt                  time.Time  `json:"measuredAt"`
 	Measurement                 string     `sql:"size:1024" json:"measurement"`
 	Value                       float64    `json:"value"`
