@@ -71,7 +71,7 @@ type Event struct {
 	AppVersion                  string     `sql:"size:20" json:"AppVersion"`
 	MeasuredAt                  time.Time  `json:"measuredAt"`
 	Measurement                 string     `sql:"size:1024" json:"measurement"`
-	Value                       float64    `json:"value"`
+	Value                       *float64    `json:"value"`
 	Fields                      string     `sql:"size:1024" json:"fields"`
 	Tags                        string     `sql:"size:1024" json:"tags"`
 	Note                        string     `sql:"size:1024" json:"note"`
