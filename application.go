@@ -85,6 +85,8 @@ type Event struct {
 	NotificationAcceptedAt      *time.Time `json:"notificationAcceptedAt"`
 	StartAt                     *time.Time `json:"startAt"`
 	EndAt                       *time.Time `json:"EndAt"`
+	MobileId                    int64      `json:"mobileId"`
+	FirstMobileId               int64      `json:"firstMobileId"`
 }
 
 type Installation struct {
