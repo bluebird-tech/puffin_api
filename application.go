@@ -84,7 +84,7 @@ type Event struct {
 	NotificationDismissedAt     *time.Time `json:"notificationDismissedAt"`
 	NotificationAcceptedAt      *time.Time `json:"notificationAcceptedAt"`
 	StartAt                     *time.Time `json:"startAt"`
-	EndAt                       *time.Time `json:"EndAt"`
+	EndAt                       *time.Time `json:"endAt"`
 	MobileId                    int64      `json:"mobileId"`
 	FirstMobileId               int64      `json:"firstMobileId"`
 }
