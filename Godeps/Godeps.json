@@ -1,6 +1,7 @@
 {
 	"ImportPath": "app",
 	"GoVersion": "go1.4",
+	"GodepVersion": "v80",
 	"Deps": [
 		{
 			"ImportPath": "github.com/ant0ine/go-json-rest/rest",
@@ -18,6 +19,11 @@
 			"Rev": "2af9d0034afcd83101abb1945f2a65ddbd563719"
 		},
 		{
+			"ImportPath": "github.com/bluebird-tech/pq",
+			"Comment": "go1.0-cutoff-204-gb200422",
+			"Rev": "b2004221932bd6b13167ef654c81cffac36f7537"
+		},
+		{
 			"ImportPath": "github.com/jinzhu/gorm",
 			"Rev": "1819dda80ab0963da3ec38f484264c1cab543786"
 		},
@@ -26,13 +32,8 @@
 			"Rev": "3272df6c21d04180007eb3349844c89a3856bc25"
 		},
 		{
-			"ImportPath": "github.com/lib/pq",
-			"Comment": "go1.0-cutoff-59-gb269bd0",
-			"Rev": "b2004221932bd6b13167ef654c81cffac36f7537"
-		},
-		{
 			"ImportPath": "github.com/lib/pq/oid",
-			"Comment": "go1.0-cutoff-59-gb269bd0",
+			"Comment": "go1.0-cutoff-204-gb200422",
 			"Rev": "b2004221932bd6b13167ef654c81cffac36f7537"
 		},
 		{

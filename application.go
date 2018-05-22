@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/ant0ine/go-json-rest/rest"
 	"github.com/jinzhu/gorm"
-	_ "github.com/lib/pq"
+	_ "github.com/bluebird-tech/pq"
 	"github.com/yvasiyarov/go-metrics"
 	"github.com/yvasiyarov/gorelic"
 	"log"
