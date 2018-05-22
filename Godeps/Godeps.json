@@ -28,12 +28,12 @@
 		{
 			"ImportPath": "github.com/lib/pq",
 			"Comment": "go1.0-cutoff-59-gb269bd0",
-			"Rev": "b269bd035a727d6c1081f76e7a239a1b00674c40"
+			"Rev": "b2004221932bd6b13167ef654c81cffac36f7537"
 		},
 		{
 			"ImportPath": "github.com/lib/pq/oid",
 			"Comment": "go1.0-cutoff-59-gb269bd0",
-			"Rev": "b269bd035a727d6c1081f76e7a239a1b00674c40"
+			"Rev": "b2004221932bd6b13167ef654c81cffac36f7537"
 		},
 		{
 			"ImportPath": "github.com/yvasiyarov/go-metrics",
